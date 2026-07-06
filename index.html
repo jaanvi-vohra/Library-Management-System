@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Willow Library — Management System</title>
+    <meta name="description" content="A warm, friendly library management system for books, borrowers, and fines." />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <!-- ============ AUTH SCREEN ============ -->
+    <div id="auth-screen" class="auth-screen hidden">
+      <div class="auth-card">
+        <div class="auth-brand">
+          <div class="logo-dot"></div>
+          <h1>Willow Library</h1>
+          <p class="muted">Cozy books. Kind reminders.</p>
+        </div>
+        <div class="tabs">
+          <button class="tab active" data-tab="login">Sign in</button>
+          <button class="tab" data-tab="register">Create account</button>
+        </div>
+        <form id="login-form" class="auth-form">
+          <label>Email<input type="email" name="email" required autocomplete="email" /></label>
+          <label>Password<input type="password" name="password" required autocomplete="current-password" /></label>
+          <button class="btn btn-primary" type="submit">Sign in</button>
+          <p class="hint">Demo admin: <code>admin@library.local</code> / <code>admin123</code></p>
+        </form>
+        <form id="register-form" class="auth-form hidden">
+          <label>Full name<input type="text" name="name" required /></label>
+          <label>Email<input type="email" name="email" required /></label>
+          <label>Password<input type="password" name="password" minlength="4" required /></label>
+          <button class="btn btn-primary" type="submit">Create account</button>
+        </form>
+      </div>
+    </div>
+    <!-- ============ APP SHELL ============ -->
+    <div id="app" class="app hidden">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="logo-dot"></div>
+          <div>
+            <div class="brand-name">Willow</div>
+            <div class="brand-sub">Library</div>
+          </div>
+        </div>
+        <nav id="nav" class="nav">
+          <button class="nav-btn" data-view="dashboard"><span>🏠</span> Dashboard</button>
+          <button class="nav-btn" data-view="books"><span>📚</span> Books</button>
+          <button class="nav-btn" data-view="mine"><span>🎒</span> My Loans</button>
+          <button class="nav-btn admin-only" data-view="history"><span>🧾</span> History</button>
+          <button class="nav-btn admin-only" data-view="users"><span>👥</span> Users</button>
+          <button class="nav-btn admin-only" data-view="settings"><span>⚙️</span> Settings</button>
+        </nav>
+        <div class="sidebar-foot">
+          <div class="user-chip">
+            <div class="avatar" id="user-avatar">?</div>
+            <div>
+              <div id="user-name" class="user-name">—</div>
+              <div id="user-role" class="user-role muted">—</div>
+            </div>
+          </div>
+          <button id="logout-btn" class="btn btn-ghost">Sign out</button>
+        </div>
+      </aside>
+      <main class="main">
+        <header class="topbar">
+          <h2 id="view-title">Dashboard</h2>
+          <div id="topbar-actions" class="topbar-actions"></div>
+        </header>
+        <section id="view" class="view"></section>
+      </main>
+    </div>
+    <!-- Modal & toast containers -->
+    <div id="modal-root"></div>
+    <div id="toast-root" class="toast-root"></div>
+    <script src="./script.js"></script>
+  </body>
+</html>
